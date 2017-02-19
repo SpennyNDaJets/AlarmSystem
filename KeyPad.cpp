@@ -17,19 +17,17 @@ KeyPad::~KeyPad(){
 int KeyPad::checkKeyPress(){
 
 	// loop through columns and set each pin to input
-	for (int c = 1; c < 4; c++) {
-		PinMode(c, INPUT);
+	for (int c = 0; c < 3; c++) {
 		check->setPin(c);
 
 		// loop through rows and set each pin to output 5V
 		for (int r = 0; r < 4; r++) {
-			int pin2 = r + 4;
-			PinMode(pin2, OUTPUT);
+			int pin2 = r + 3;
 			DigitalWrite(pin2, HIGH);
 
 			// determine which button was pressed
 			if (check->checkButtonEvent()){
-				return c + 3 * r;
+				return c + 1 + 3 * r;
 			}
 
 		}
