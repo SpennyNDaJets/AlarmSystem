@@ -8,6 +8,11 @@ KeyPad::KeyPad(){
 	check = new MyButton(0);
 }
 
+// deconstructor
+KeyPad::~KeyPad(){
+	delete check;
+}
+
 // check if key has been presses
 int KeyPad::checkKeyPress(){
 

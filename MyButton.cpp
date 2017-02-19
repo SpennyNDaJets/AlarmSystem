@@ -2,12 +2,19 @@
 
 #include "MyButton.h";
 
+// constructor
 MyButton::MyButton(int pin) {
 	pinNum = pin;
 	lastButtonState = 0;
 	debounce = new EventTimer();
 }
 
+// deconstructor
+MyButton::~MyButton() {
+	delete debonce;
+}
+
+// check if button is engaged
 bool MyButton::checkButtonEvent() {
 
 	// update current state

@@ -10,6 +10,7 @@ class MyButton {
 
 public:
 	MyButton(int pin);
+	~MyButton();
 	bool checkButtonEvent();
 	void setPin(int pin);
 

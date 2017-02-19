@@ -10,6 +10,7 @@ class KeyPad{
 public:
 	// constructor
 	KeyPad();
+	~KeyPad();
 
 	// check if key has been pressed
 	int checkKeyPress();
