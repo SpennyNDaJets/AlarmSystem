@@ -3,7 +3,7 @@
 #ifndef EVENTTIMER_H
 #define EVENTTIMER_H
 
-#include "ardruino.h"
+#include "arduino.h"
 
 class EventTimer
 {
