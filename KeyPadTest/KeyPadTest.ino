@@ -1,15 +1,17 @@
 
-KeyPad lock();
+#include "KeyPad.h"
+
+KeyPad lock;
 
 void setup() {
   Serial.begin(9600);
   // columns are inputs/ rows are outputs
-  DDrd = 0001111;
+  DDRD = 15;
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int buttonPress = lock.checkKeyPad();
+  int buttonPress = lock.checkKeyPress();
   if (buttonPress < 10) {
     Serial.print(buttonPress);
     Serial.print("\n");
@@ -23,7 +25,7 @@ void loop() {
     Serial.print("\n");
   }
   else if (buttonPress == 12) {
-    Serial.print("#');
+    Serial.print("#");
     Serial.print("\n");
   }
 }
