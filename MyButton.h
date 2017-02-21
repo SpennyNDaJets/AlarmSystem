@@ -3,7 +3,7 @@
 #ifndef MYBUTTON_H
 #define MYBUTTON_H
 
-#include "arduino.h";
+#include "arduino.h"
 #include "EventTimer.h"
 
 class MyButton {
