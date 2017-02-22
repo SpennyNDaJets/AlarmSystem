@@ -11,11 +11,14 @@ public:
 	// constructor
 	KeyPad();
 
+	// deconstructor
+	~KeyPad();
+
 	// check if key has been pressed
 	int checkKeyPress();
 
 private:
-	MyButton check;
+	MyButton* check;
 };
 
 #endif

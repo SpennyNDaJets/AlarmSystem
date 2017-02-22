@@ -5,9 +5,13 @@
 
 // constructor
 KeyPad::KeyPad(){
-	check = MyButton(0);
+	check = new MyButton(0);
 }
 
+// destructor
+KeyPad::~KeyPad() {
+	delete check;
+}
 
 // check if key has been presses
 int KeyPad::checkKeyPress(){
@@ -21,10 +25,10 @@ int KeyPad::checkKeyPress(){
 		// loop through rows and set each pin to output 5V
 		for (int c = 0; c < 3; c++) {
 			int input = c + 4;
-			check.setPin(input);
+			check->setPin(input);
 
 			// determine which button was pressed
-			if (check.checkButtonEvent()){
+			if (check->checkButtonEvent()){
 				digitalWrite(output, LOW);
 				return 1 + c + 3 * r;
 			}
