@@ -10,14 +10,13 @@ class MyButton {
 
 public:
 	MyButton(int pin);
-	~MyButton();
 	bool checkButtonEvent();
 	void setPin(int pin);
 
 private:
 	int pinNum;
 	int lastButtonState;
-	EventTimer* debounce;
+	EventTimer debounce;
 };
 
 #endif

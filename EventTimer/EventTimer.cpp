@@ -24,10 +24,15 @@ void EventTimer::cancel(){
 
 // return true if timer is running and time is past end time
 bool EventTimer::checkExpired() {
-    if (millis() - startTime >= duration && isRunning)
+    if ((millis() - startTime >= duration) && isRunning)
     {
       isRunning = false;
       return true;
     }
     return false;
+}
+
+// return isRunning
+bool EventTimer::getIsRunning() {
+    return isRunning;
 }

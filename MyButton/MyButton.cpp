@@ -6,13 +6,9 @@
 MyButton::MyButton(int pin) {
 	pinNum = pin;
 	lastButtonState = 0;
-	debounce = new EventTimer();
+	debounce = EventTimer();
 }
 
-// deconstructor
-MyButton::~MyButton() {
-	delete debounce;
-}
 
 // check if button is engaged
 bool MyButton::checkButtonEvent() {
@@ -21,10 +17,10 @@ bool MyButton::checkButtonEvent() {
 	int currentState = digitalRead(pinNum);
 
 	// check for change in state and that it is not within 10ms of last change in state
-	if (currentState != lastButtonState && debounce->checkExpired()) 
+	if (currentState != lastButtonState && (debounce.checkExpired() || !debounce.getIsRunning()) 
 	{
 		// start timer at change of stat
-		debounce->start(10);
+		debounce.start(10);
 
 		// check if button was pushed (not released)
 		if (lastButtonState == 0)

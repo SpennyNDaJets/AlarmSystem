@@ -24,6 +24,9 @@ class EventTimer
 
   // return true if timer is running and time is past end time
   bool checkExpired();
+
+  // return isRunning
+  bool getIsRunning();
 };
 
 #endif
