@@ -3,13 +3,13 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 
+#define STAR 10
+#define ZRO 11
+#define POUND 12
+
 
 class Validator {
 public:
-	// constants
-	const int star = 10;
-	const int zero = 11;
-	const int pound = 12;
 
 	// default constructor
 	Validator();

@@ -23,10 +23,10 @@ bool MyButton::checkButtonEvent() {
 	// check for change in state and that it is not within 10ms of last change in state
 	if (currentState != lastButtonState && (debounce->checkExpired() || !debounce->getIsRunning())) {
 		// start timer at change of stat
-		debounce->start(10);
+		debounce->start(100);
 
 		// check if button was pushed (not released)
-		if (lastButtonState == 0)
+		if (currentState == 1)
 		{
 			// update last state and return true
 			lastButtonState = currentState;
@@ -38,7 +38,6 @@ bool MyButton::checkButtonEvent() {
 	}
 	return false;
 }
-
 
 // set the new pin number
 void MyButton::setPin(int pin) {

@@ -1,6 +1,7 @@
 // Validator Implementation
 
 #include "Validator.h"
+#include "arduino.h"
 
 // default constructor
 Validator::Validator() {
@@ -21,7 +22,7 @@ Validator::Validator(int f, int s, int t, int fo) {
 
 // convert to 0 if zero key is pressed
 int Validator::convertZero(int digit) {
-	if (digit == zero)
+	if (digit == ZRO)
 		return 0;
 	else
 		return digit;
@@ -47,35 +48,39 @@ bool Validator::validateCode() {
 
 // check if digit matches code and unlock if all digits entered followed by '#'
 bool Validator::checkCode(int digit){
+	// if nothing is pressed
+	if (digit == 0) {
+		return false;
+	}
 	// convert if 0
 	int enter = convertZero(digit);
 
 	// check '*'
-	if (enter == star){
-		this->reset();
+	if (enter == STAR){
+
+		reset();
 		return false;
 	}
 
 	// validate code if '#'
-	else if (enter == pound){
-		return this->validateCode();
+	else if (enter == POUND){
+		return validateCode();
 	}
 
-
 	// code is wrong if counter is less than 0 or greater than 3
-	if ((count < 0) || (count > 3)) {
+	else if ((count < 0) || (count > 3)) {
 		return false;
 	}
 	
-	// check if button matches next digit of code
-	else if (code[count] == enter) {
-		count ++;
+	// code is wrong and set counter to -1
+	else if (code[count] != enter) {
+		count = -1;
 		return false;
 	}
 
-	// code is wrong and set counter to -1
-	else {
-		count = -1;
+	// check if button matches next digit of code
+	else if (code[count] == enter){
+		count ++;
 		return false;
 	}
 }

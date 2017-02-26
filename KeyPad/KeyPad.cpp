@@ -20,6 +20,10 @@ int KeyPad::checkKeyPress(){
 	// cannot use pins 0 or 1
 	for (int r = 0; r < 4; r++) {
 		int output = r + 7;
+		// pin 9 is reserved for piezo
+		if (output == 9){
+			output = 11;
+		}
 		pinMode(output, OUTPUT);
 		digitalWrite(output, HIGH);
 
