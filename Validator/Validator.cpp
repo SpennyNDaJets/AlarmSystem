@@ -69,6 +69,7 @@ bool Validator::checkCode(int digit){
 
 	// code is wrong if counter is less than 0 or greater than 3
 	else if ((count < 0) || (count > 3)) {
+		count = -1;
 		return false;
 	}
 	
